@@ -18,10 +18,13 @@ clean :
 distclean : clean
 	rm -rf .build Package.resolved
 
+package-dir : Makefile
+	mkdir -p Sources/$(PACKAGE_NAME)
+
 package-as-swift : Sources/$(PACKAGE_NAME)/ResourceMap.swift \
 		   Sources/$(PACKAGE_NAME)/Resources.swift
 
-Sources/$(PACKAGE_NAME)/Resources.swift: $($(PACKAGE_NAME)_RESOURCE_FILES) Makefile
+Sources/$(PACKAGE_NAME)/Resources.swift: $($(PACKAGE_NAME)_RESOURCE_FILES) Makefile package-dir
 	@echo "// Generated on `date`" > $@
 	@echo "//" >> $@
 	@echo "" >> $@
@@ -36,7 +39,7 @@ Sources/$(PACKAGE_NAME)/Resources.swift: $($(PACKAGE_NAME)_RESOURCE_FILES) Makef
 	done
 	@echo "}" >> $@
 	
-Sources/$(PACKAGE_NAME)/ResourceMap.swift: $($(PACKAGE_NAME)_RESOURCE_FILES) Makefile
+Sources/$(PACKAGE_NAME)/ResourceMap.swift: $($(PACKAGE_NAME)_RESOURCE_FILES) Makefile package-dir
 	@echo "// Generated on `date`" > $@
 	@echo "//" >> $@
 	@echo >> $@
