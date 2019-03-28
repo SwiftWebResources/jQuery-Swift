@@ -14,7 +14,7 @@ public extension jQuery {
    * - "jquery.min.js"
    *
    */
-  public static func resourceNamed(_ name: String) -> Data? {
+  static func resourceNamed(_ name: String) -> Data? {
     switch name {
 
       case "jquery.min.js":
