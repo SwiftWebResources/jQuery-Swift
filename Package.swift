@@ -1,15 +1,11 @@
+// swift-tools-version:5.0
 import PackageDescription
 
 let package = Package(
   name: "jQuery",
-
-  targets: [ Target(name: "jQuery") ],
-
-  dependencies: [
+  products: [
+    .library(name: "jQuery", targets: ["jQuery"])
   ],
-	
-  exclude: [
-    "Makefile",
-    "README.md"
-  ]
+  dependencies: [],
+  targets: [ .target(name: "jQuery") ]
 )
