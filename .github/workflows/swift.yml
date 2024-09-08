@@ -9,6 +9,7 @@ on:
 jobs:
   linux:
     runs-on: ubuntu-latest
+    if: github.ref != 'refs/heads/main'
     strategy:
       fail-fast: false
       matrix:
@@ -27,6 +28,7 @@ jobs:
         run: swift build -c release
   nextstep:
     runs-on: macos-latest
+    if: github.ref != 'refs/heads/main'
     steps:
       - name: Select latest available Xcode
         uses: maxim-lobanov/setup-xcode@v1.5.1
